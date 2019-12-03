@@ -16,6 +16,12 @@
       this.stop.classList.add('stop');
       this.stop.addEventListener('click', () => {
         clearTimeout(this.timeoutId);
+
+        panelsLeft--;
+
+        if (panelsLeft === 0) {
+          checkResult();
+        }
       });
 
       section.appendChild(this.img);
@@ -42,11 +48,25 @@
     }
   }
 
+  function checkResult() {
+    if (palnels[0].isUnmatched(panels[1], panels[2])) {
+      opanels[0].unmatch();
+    }
+    if (palnels[1].isUnmatched(panels[0], panels[2])) {
+      opanels[1].unmatch();
+    }
+    if (palnels[2].isUnmatched(panels[0], panels[1])) {
+      opanels[2].unmatch();
+    }
+  }
+
   const panels = [
     new Panel(),
     new Panel(),
     new Panel(),
   ];
+
+  let panelsLeft = 3;
 
   const spin = document.getElementById('spin');
   spin.addEventListener('click', () => {
