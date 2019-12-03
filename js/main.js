@@ -46,17 +46,30 @@
         this.spin();
       }, 50);
     }
+
+    isUnmatched(p1, p2) {
+      // if (this.img.src !== p1.img.src && this.img.src !== p2.img.src) {
+      //   return true;
+      // } else {
+      //   return false;
+      // }
+      return this.img.src !== p1.img.src && this.img.src !== p2.img.src;
+    }
+
+    unmatch() {
+      this.img.classList.add('unmatched');
+    }
   }
 
   function checkResult() {
-    if (palnels[0].isUnmatched(panels[1], panels[2])) {
-      opanels[0].unmatch();
+    if (panels[0].isUnmatched(panels[1], panels[2])) {
+      panels[0].unmatch();
     }
-    if (palnels[1].isUnmatched(panels[0], panels[2])) {
-      opanels[1].unmatch();
+    if (panels[1].isUnmatched(panels[0], panels[2])) {
+      panels[1].unmatch();
     }
-    if (palnels[2].isUnmatched(panels[0], panels[1])) {
-      opanels[2].unmatch();
+    if (panels[2].isUnmatched(panels[0], panels[1])) {
+      panels[2].unmatch();
     }
   }
 
